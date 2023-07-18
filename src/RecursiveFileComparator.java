@@ -10,13 +10,13 @@ public class RecursiveFileComparator {
         if (differences.isEmpty()) {
             System.out.println("Both paths are identical.");
         } else {
-            System.out.println("These directories have differences:");
+            System.out.println("These directories have differences:\n");
             int i = 0;
             for (String difference : differences) {
                 System.out.println(difference);
                 i++;
                 if (i % 2 == 0) {
-                    System.out.println();
+                    System.out.println("\n");
                 }
             }
         }
@@ -26,15 +26,7 @@ public class RecursiveFileComparator {
         File root1 = new File(path1);
         File root2 = new File(path2);
 
-        if (!root1.exists() || !root2.exists()) {
-            differences.add(path1);
-            differences.add(path2);
-            return;
-        }
-
-        if (!root1.isDirectory() || !root2.isDirectory()) {
-            differences.add(path1);
-            differences.add(path2);
+        if (!root1.exists() || !root2.exists() || !root1.isDirectory() || !root2.isDirectory()) {
             return;
         }
 
